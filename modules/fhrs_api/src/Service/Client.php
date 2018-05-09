@@ -135,7 +135,7 @@ class Client {
    *   Return string.
    */
   private function buildArgHash(array $args, $url) {
-    // Build an argument hash API signing (we'll also use it for the cache id).
+    // Build an argument hash we'll use it for the cache id.
     $argHash = $url;
 
     foreach ($args as $k => $v) {

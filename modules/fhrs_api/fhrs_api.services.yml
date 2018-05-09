@@ -5,3 +5,9 @@ services:
   fhrs_api.establishments:
     class: Drupal\fhrs_api\Service\Establishments
     arguments: ["@fhrs_api.client", "@logger.factory"]
+  fhrs_api.sortoptions:
+    class: Drupal\fhrs_api\Service\SortOptions
+    arguments: ["@fhrs_api.client", "@logger.factory"]
+  fhrs_api.authorities:
+    class: Drupal\fhrs_api\Service\Authorities
+    arguments: ["@fhrs_api.client", "@logger.factory"]

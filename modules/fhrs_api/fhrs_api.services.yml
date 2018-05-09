@@ -1,0 +1,7 @@
+services:
+  fhrs_api.client:
+    class: Drupal\fhrs_api\Service\Client
+    arguments: ["@config.factory", "@cache.default", "@string_translation", "@logger.factory"]
+  fhrs_api.establishments:
+    class: Drupal\fhrs_api\Service\Establishments
+    arguments: ["@fhrs_api.client", "@logger.factory"]

@@ -17,3 +17,6 @@ services:
   fhrs_api.ratingoperators:
     class: Drupal\fhrs_api\Service\RatingOperators
     arguments: ["@fhrs_api.client", "@logger.factory"]
+  fhrs_api.schemetypes:
+    class: Drupal\fhrs_api\Service\SchemeTypes
+    arguments: ["@fhrs_api.client", "@logger.factory"]

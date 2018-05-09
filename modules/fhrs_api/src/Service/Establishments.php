@@ -26,7 +26,7 @@ class Establishments {
   protected $loggerFactory;
 
   /**
-   * Media constructor.
+   * Establishments constructor.
    *
    * @param \Drupal\fhrs_api\Service\Client $client
    *   Client.
@@ -70,7 +70,7 @@ class Establishments {
    *   Response array.
    *   http://api.ratings.food.gov.uk/Help/Api/GET-Establishments_name_address_longitude_latitude_maxDistanceLimit_businessTypeId_schemeTypeKey_ratingKey_ratingOperatorKey_localAuthorityId_countryId_sortOptionKey_pageNumber_pageSize
    */
-  public function getEstablishments(array $args = [], $cacheable = TRUE) {
+  public function searchEstablishments(array $args = [], $cacheable = TRUE) {
     if (!isset($args['pageSize'])) {
       $args['pageSize'] = 1;
     }
@@ -78,6 +78,66 @@ class Establishments {
     $response = $this->client->request(
       '/Establishments',
       $args,
+      $cacheable
+    );
+
+    if ($response) {
+      return $response;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Get a list of Establishments.
+   *
+   * Returns details of all Establishments, results are unbound.
+   *
+   * @param bool $basic
+   *   Basic or Full.
+   * @param bool $cacheable
+   *   Cacheable.
+   *
+   * @return array|bool
+   *   Response array.
+   *   http://api.ratings.food.gov.uk/Help/Api/GET-Establishments-basic
+   */
+  public function getEstablishments($basic = FALSE, $cacheable = TRUE) {
+    $url = '/Establishments';
+
+    if ($basic == TRUE) {
+      $url = $url . '/basic';
+    }
+
+    $response = $this->client->request(
+      $url,
+      [],
+      $cacheable
+    );
+
+    if ($response) {
+      return $response;
+    }
+
+    return FALSE;
+  }
+
+  /**
+   * Returns details of a single Establishment, selected by Id.
+   *
+   * @param bool $id
+   *   ID.
+   * @param bool $cacheable
+   *   Cacheable.
+   *
+   * @return array|bool
+   *   Response array.
+   *   http://api.ratings.food.gov.uk/Help/Api/GET-Establishments-id
+   */
+  public function getEstablishment($id, $cacheable = TRUE) {
+    $response = $this->client->request(
+      '/Establishments/' . $id,
+      [],
       $cacheable
     );
 

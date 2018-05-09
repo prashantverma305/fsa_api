@@ -11,6 +11,9 @@ services:
   fhrs_api.authorities:
     class: Drupal\fhrs_api\Service\Authorities
     arguments: ["@fhrs_api.client", "@logger.factory"]
+  fhrs_api.regions:
+    class: Drupal\fhrs_api\Service\Regions
+    arguments: ["@fhrs_api.client", "@logger.factory"]
   fhrs_api.ratings:
     class: Drupal\fhrs_api\Service\Ratings
     arguments: ["@fhrs_api.client", "@logger.factory"]

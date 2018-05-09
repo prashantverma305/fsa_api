@@ -17,6 +17,9 @@ services:
   fhrs_api.countries:
     class: Drupal\fhrs_api\Service\Countries
     arguments: ["@fhrs_api.client", "@logger.factory"]
+  fhrs_api.businesstypes:
+    class: Drupal\fhrs_api\Service\BusinessTypes
+    arguments: ["@fhrs_api.client", "@logger.factory"]
   fhrs_api.ratings:
     class: Drupal\fhrs_api\Service\Ratings
     arguments: ["@fhrs_api.client", "@logger.factory"]

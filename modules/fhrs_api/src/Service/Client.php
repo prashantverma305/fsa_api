@@ -171,12 +171,14 @@ class Client {
       if ($response->getStatusCode() == 200) {
         $contents = $response->getBody()->getContents();
         $json = Json::decode($contents);
-        kint($json);
+        // kint($json);
+        // TODO Add Debugging options.
         return $json;
       }
     }
     catch (GuzzleException $e) {
-      kint($e);
+      // kint($e);
+      // TODO Add Debugging options.
       $this->loggerFactory->get('fhrs_api')->error("@message", ['@message' => $e->getMessage()]);
       return FALSE;
     }
